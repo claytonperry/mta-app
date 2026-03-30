@@ -62,7 +62,7 @@ header h1 {
     font-variant-numeric: tabular-nums;
 }
 
-/* Station grid — adapts from 1 to 3 stations */
+/* Station grid — adapts to any number of stations */
 .stations {
     display: grid;
     gap: 1.5rem;
@@ -73,6 +73,9 @@ header h1 {
 .stations[data-count="1"] { grid-template-columns: 1fr; }
 .stations[data-count="2"] { grid-template-columns: 1fr 1fr; }
 .stations[data-count="3"] { grid-template-columns: 1fr 1fr 1fr; }
+.stations[data-count="4"] { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.stations[data-count="5"] { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.stations[data-count="6"] { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
 
 /* Station card */
 .station {

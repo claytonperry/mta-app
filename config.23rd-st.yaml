@@ -1,6 +1,9 @@
 # 23rd Street stations — copy to config.yaml on the second Pi
 
 stations:
+  - stop_id: "A30"
+    name: "23 St (8th Ave)"
+    lines: ["A", "C", "E"]
   - stop_id: "132"
     name: "23 St (7th Ave)"
     lines: ["1", "2", "3"]
