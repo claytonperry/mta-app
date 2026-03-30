@@ -1,0 +1,15 @@
+# 23rd Street stations — copy to config.yaml on the second Pi
+
+stations:
+  - stop_id: "132"
+    name: "23 St (7th Ave)"
+    lines: ["1", "2", "3"]
+  - stop_id: "F23"
+    name: "23 St (6th Ave)"
+    lines: ["F", "M"]
+  - stop_id: "R23"
+    name: "23 St (Broadway)"
+    lines: ["N", "R", "W"]
+
+refresh_interval_seconds: 30
+max_arrivals_per_direction: 5
