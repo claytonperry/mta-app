@@ -1,0 +1,204 @@
+/* MTA arrival board — dark theme inspired by real subway signage */
+
+:root {
+    --bg: #111111;
+    --card-bg: #1a1a1a;
+    --text: #e0e0e0;
+    --text-dim: #888888;
+    --accent: #ffcc00;
+    --border: #333333;
+
+    /* MTA line colors */
+    --line-1: #ee352e; --line-2: #ee352e; --line-3: #ee352e;
+    --line-4: #00933c; --line-5: #00933c; --line-6: #00933c;
+    --line-7: #b933ad;
+    --line-A: #0039a6; --line-C: #0039a6; --line-E: #0039a6;
+    --line-B: #ff6319; --line-D: #ff6319; --line-F: #ff6319; --line-M: #ff6319;
+    --line-G: #6cbe45;
+    --line-J: #996633; --line-Z: #996633;
+    --line-L: #a7a9ac;
+    --line-N: #fccc0a; --line-Q: #fccc0a; --line-R: #fccc0a; --line-W: #fccc0a;
+    --line-S: #808183;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+#clock {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Station grid — adapts from 1 to 3 stations */
+.stations {
+    display: grid;
+    gap: 1.5rem;
+    flex: 1;
+    min-height: 0;
+}
+
+.stations[data-count="1"] { grid-template-columns: 1fr; }
+.stations[data-count="2"] { grid-template-columns: 1fr 1fr; }
+.stations[data-count="3"] { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Station card */
+.station {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.station-header {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+.station-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.line-badges {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.line-badge {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Direction columns */
+.directions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    min-height: 0;
+}
+
+.direction {
+    padding: 0.6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.direction:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.direction-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 0.3rem;
+}
+
+/* Individual arrival row */
+.arrival {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+}
+
+.arrival .line-badge {
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.arrival .dest {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.arrival .time {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 3.5rem;
+}
+
+.arrival .time.now {
+    color: var(--accent);
+}
+
+.no-trains {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+
+/* Loading / error states */
+.status {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-dim);
+}
+
+.status.error { color: #ee352e; }
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTA Arrivals</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Subway Arrivals</h1>
+            <div id="clock"></div>
+        </header>
+        <div id="stations" class="stations" data-count="{{ stations|length }}">
+            <div class="status">Loading...</div>
+        </div>
+        <footer>
+            Updates every {{ refresh_interval }}s
+        </footer>
+    </div>
+    <script>
+        window.MTA_REFRESH_INTERVAL = {{ refresh_interval }};
+    </script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
